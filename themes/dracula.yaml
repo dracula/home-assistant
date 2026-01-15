@@ -201,10 +201,10 @@
 
   switch-checked-color: "var(--dracula-purple)"
   switch-unchecked-color: "var(--dracula-foreground)"
-  switch-checked-button-color: "var(--dracula-foreground)"           # White knob on ON (high contrast)
-  switch-checked-track-color: "var(--dracula-purple)"                # Purple track on ON (elevated)
-  switch-unchecked-button-color: "var(--dracula-comment)"            # Gray knob on OFF
-  switch-unchecked-track-color: "var(--dracula-background)"          # Darker track on OFF (recedes)
+  switch-checked-button-color: "var(--dracula-foreground)" # White knob on ON (high contrast)
+  switch-checked-track-color: "var(--dracula-purple)" # Purple track on ON (elevated)
+  switch-unchecked-button-color: "var(--dracula-comment)" # Gray knob on OFF
+  switch-unchecked-track-color: "var(--dracula-background)" # Darker track on OFF (recedes)
 
   # ───────────────────────────────────────────────────────────────────────────
   # Slider Colors
@@ -242,14 +242,14 @@
   # Menu/Dropdown backgrounds (darker for depth)
   mdc-menu-background-color: "var(--dracula-darker)"
   menu-background-color: "var(--dracula-darker)"
-  
+
   # Dropdown menu items
   mdc-menu-item-background-color: "var(--dracula-darker)"
   mdc-menu-item-hover-background-color: "var(--dracula-current-line)"
-  
+
   # Menu shadows for depth (more prominent)
   mdc-menu-box-shadow: "0px 8px 16px 0px rgba(0, 0, 0, 0.6), 0px 0px 0px 1px rgba(139, 233, 253, 0.1)"
-  
+
   # Dropdown border for definition
   mdc-menu-border-color: "rgba(139, 233, 253, 0.2)"
 
@@ -413,11 +413,11 @@
   mdc-select-outlined-idle-border-color: "rgba(139, 233, 253, 0.5)"
   mdc-select-outlined-hover-border-color: "var(--dracula-cyan)"
   mdc-select-outlined-disabled-border-color: "var(--input-outlined-disabled-border-color)"
-  
+
   # Darker dropdown fill
   mdc-select-fill-color: "var(--dracula-darker)"
   mdc-select-disabled-fill-color: "var(--input-disabled-fill-color)"
-  
+
   mdc-select-ink-color: "var(--dracula-foreground)"
   mdc-select-label-ink-color: "var(--dracula-comment)"
   mdc-select-disabled-ink-color: "var(--input-disabled-ink-color)"
@@ -501,7 +501,7 @@
 
   # Pop-up styling
   bubble-pop-up-background-color: "var(--dracula-current-line)"
-  bubble-pop-up-main-background-color: "var(--dracula-comment)"          # Close button - lighter gray
+  bubble-pop-up-main-background-color: "var(--dracula-comment)" # Close button - lighter gray
   bubble-secondary-background-color: "var(--dracula-background)"
   bubble-pop-up-border-radius: "42px"
   bubble-pop-up-border: "none"
