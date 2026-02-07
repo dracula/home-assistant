@@ -4,6 +4,10 @@
 
 ![Dashboard Screenshot](./screenshot-02.png)
 
+### Floating Buttons (with card-mod)
+
+![Floating Buttons Screenshot](./screenshot-03.png)
+
 ### Code Editor View
 
 ![Code Editor Screenshot](./screenshot.png)
@@ -24,6 +28,11 @@ All instructions can be found at [draculatheme.com/home-assistant](https://dracu
 - 🎯 Modern 12px border radius on cards
 - ✨ Smooth transitions and hover effects for premium feel
 - 🌙 Dark mode optimized with enhanced depth perception
+- 🔘 Floating navigation buttons with [card-mod](https://github.com/thomasloven/lovelace-card-mod) support (optional)
+
+## Optional Enhancement: Floating Buttons
+
+The theme includes floating hamburger and edit buttons for desktop (>=768px). These require [card-mod](https://github.com/thomasloven/lovelace-card-mod) installed via HACS. The theme works perfectly without card-mod -- you get the full Dracula color palette. card-mod only adds the floating navigation buttons.
 
 ## Acknowledgments
 

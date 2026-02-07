@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-02-07
+
+### Added
+- **Floating Navigation Buttons** - Hamburger menu (left) + Edit/Done button (right)
+  - Desktop only (>=768px), automatically hidden on mobile
+  - Dracula-styled: semi-transparent current-line background with purple hover effects
+  - Edit mode: Purple "Done" pill button with proper text visibility
+  - Requires [card-mod](https://github.com/thomasloven/lovelace-card-mod) (optional -- theme works without it)
+- **card-mod Integration** - Added `card-mod-theme` declaration for theme-level card-mod support
+- **HA 2026.2 Compatibility** - Updated selectors for Home Assistant 2026.2 + card-mod 4.2.0
+
+### Fixed
+- Done button text visibility in edit mode
+- Pencil icon centering with absolute positioning + transform
+- Horizontal line artifacts from header pseudo-elements
+- Click response latency on floating buttons (GPU acceleration)
+
+### Technical
+- Added ~315 lines of responsive CSS via card-mod-root-yaml
+- Performance: specific property transitions, will-change hints, backface-visibility
+- File size: 541 -> 880 lines (+63%)
+- Graceful degradation: theme works fully without card-mod (buttons simply don't appear)
+
 ## [1.2.2] - 2025-10-04
 
 ### Enhanced
