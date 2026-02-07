@@ -1,10 +1,331 @@
+# ═══════════════════════════════════════════════════════════════════════════
 # Dracula Theme for Home Assistant
 # https://draculatheme.com/home-assistant
+# ═══════════════════════════════════════════════════════════════════════════
 # Creator: Mantej Singh
-# Version: 1.2.2
-# Updated: 2025-10-04
+# Version: 1.3.0
+# Updated: 2026-02-07
+# Changelog: See end of file or CHANGELOG.md
+# ═══════════════════════════════════════════════════════════════════════════
 
 "Dracula":
+  card-mod-theme: Dracula
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # FLOATING BUTTONS: Hamburger (left) + Edit/Done (right)
+  # Desktop: ☰ (left) and ✏️/Done (right) | Mobile: Hidden
+  # Requires card-mod (optional -- theme works fully without it)
+  # ─────────────────────────────────────────────────────────────────────────────
+  card-mod-root-yaml: |
+    .: |
+      /* ═══════════════════════════════════════════════════════════════════ */
+      /* MOBILE: Everything hidden                                            */
+      /* Devices ≤767px width (phones, small tablets)                         */
+      /* ═══════════════════════════════════════════════════════════════════ */
+      @media (max-width: 767px) {
+        div.header {
+          display: none !important;
+        }
+        #view {
+          padding-top: 0px !important;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════════════════════ */
+      /* DESKTOP: Floating hamburger (left) + Edit/Done (right)               */
+      /* Devices ≥768px width (tablets landscape, laptops, desktops)          */
+      /* Compatible with Home Assistant 2026.2 + card-mod 4.2.0               */
+      /* ═══════════════════════════════════════════════════════════════════ */
+      @media (min-width: 768px) {
+        /* ─────────────────────────────────────────────────────────────── */
+        /* HEADER POSITIONING: Split left and right                         */
+        /* Remove border, outline, and any visible lines                    */
+        /* ─────────────────────────────────────────────────────────────── */
+        div.header {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          width: 100% !important;
+          z-index: 999 !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          border: none !important;
+          border-bottom: none !important;
+          outline: none !important;
+          padding: 12px !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: flex-start !important;
+          pointer-events: none !important;
+        }
+
+        /* Remove horizontal line from header pseudo-elements */
+        div.header::before,
+        div.header::after {
+          display: none !important;
+          content: none !important;
+        }
+
+        div.toolbar {
+          background: transparent !important;
+          padding: 0 !important;
+          min-height: auto !important;
+          box-shadow: none !important;
+          border: none !important;
+          border-bottom: none !important;
+          outline: none !important;
+          width: 100% !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          pointer-events: none !important;
+        }
+
+        /* Remove any toolbar pseudo-elements */
+        div.toolbar::before,
+        div.toolbar::after {
+          display: none !important;
+          content: none !important;
+        }
+
+        /* Hide navigation tabs */
+        ha-tab-group {
+          display: none !important;
+        }
+
+        /* Hide any separator or divider elements */
+        div.header hr,
+        div.toolbar hr,
+        div.header .divider,
+        div.toolbar .divider,
+        div.header [class*="separator"],
+        div.toolbar [class*="separator"],
+        div.header [class*="divider"],
+        div.toolbar [class*="divider"] {
+          display: none !important;
+        }
+
+        /* ─────────────────────────────────────────────────────────────── */
+        /* HAMBURGER MENU (LEFT SIDE)                                       */
+        /* Dracula: current-line background → purple on hover               */
+        /* ─────────────────────────────────────────────────────────────── */
+        ha-menu-button {
+          position: fixed !important;
+          top: 12px !important;
+          left: 12px !important;
+          z-index: 1000 !important;
+          background: rgba(68, 71, 90, 0.35) !important;
+          border-radius: 50% !important;
+          border: none !important;
+          outline: none !important;
+          width: 48px !important;
+          height: 48px !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+          pointer-events: auto !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+          will-change: transform, background !important;
+          -webkit-backface-visibility: hidden !important;
+          backface-visibility: hidden !important;
+        }
+
+        ha-menu-button ha-icon-button {
+          --mdc-icon-button-size: 48px !important;
+          --mdc-icon-size: 24px !important;
+          color: #f8f8f2 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        ha-menu-button:hover {
+          background: rgba(189, 147, 249, 0.95) !important;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+          transform: scale(1.05) !important;
+        }
+
+        /* ─────────────────────────────────────────────────────────────── */
+        /* EDIT/DONE BUTTON (RIGHT SIDE) - VIEW MODE (not editing)          */
+        /* Dracula: current-line background → purple on hover               */
+        /* ─────────────────────────────────────────────────────────────── */
+        div.header:not(.edit-mode) div.action-items {
+          position: fixed !important;
+          top: 12px !important;
+          right: 12px !important;
+          z-index: 1000 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          background: rgba(68, 71, 90, 0.35) !important;
+          border-radius: 50% !important;
+          border: none !important;
+          outline: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          width: 48px !important;
+          height: 48px !important;
+          min-width: 48px !important;
+          min-height: 48px !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+          pointer-events: auto !important;
+          overflow: visible !important;
+          transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+          will-change: transform, background !important;
+          -webkit-backface-visibility: hidden !important;
+          backface-visibility: hidden !important;
+        }
+
+        div.header:not(.edit-mode) div.action-items:hover {
+          background: rgba(189, 147, 249, 0.95) !important;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+          transform: scale(1.05) !important;
+        }
+
+        /* VIEW MODE: Hide ALL children first with proper reset */
+        div.header:not(.edit-mode) div.action-items > * {
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+          position: absolute !important;
+          width: 0 !important;
+          height: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        /* VIEW MODE: Show and properly center the edit button */
+        div.header:not(.edit-mode) div.action-items > ha-icon-button:last-of-type {
+          visibility: visible !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 48px !important;
+          height: 48px !important;
+          --mdc-icon-button-size: 48px !important;
+          --mdc-icon-size: 24px !important;
+          color: #f8f8f2 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        /* VIEW MODE: Ensure icon inside button is also centered */
+        div.header:not(.edit-mode) div.action-items > ha-icon-button:last-of-type ha-svg-icon,
+        div.header:not(.edit-mode) div.action-items > ha-icon-button:last-of-type ha-icon {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        div.header:not(.edit-mode) div.action-items > ha-icon-button:last-of-type * {
+          pointer-events: none !important;
+        }
+
+        /* ─────────────────────────────────────────────────────────────── */
+        /* EDIT MODE: Show Done button on right, keep hamburger on left     */
+        /* Purple pill button with visible text                             */
+        /* ─────────────────────────────────────────────────────────────── */
+        div.edit-mode div.action-items {
+          position: fixed !important;
+          top: 12px !important;
+          right: 12px !important;
+          z-index: 1000 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          border-radius: 24px !important;
+          width: auto !important;
+          min-width: 80px !important;
+          height: 44px !important;
+          padding: 0 16px !important;
+          background: rgba(189, 147, 249, 0.95) !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+          pointer-events: auto !important;
+          overflow: visible !important;
+        }
+
+        div.edit-mode div.action-items:hover {
+          background: rgba(189, 147, 249, 1) !important;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+          transform: scale(1.02) !important;
+        }
+
+        /* Reset ALL children in edit mode to be visible */
+        div.edit-mode div.action-items > * {
+          visibility: visible !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          position: relative !important;
+          width: auto !important;
+          height: auto !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          color: #f8f8f2 !important;
+        }
+
+        /* Style the Done/Save button text */
+        div.edit-mode div.action-items ha-button,
+        div.edit-mode div.action-items mwc-button,
+        div.edit-mode div.action-items button,
+        div.edit-mode div.action-items [class*="exit"],
+        div.edit-mode div.action-items [class*="done"],
+        div.edit-mode div.action-items [class*="save"] {
+          visibility: visible !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          position: relative !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: auto !important;
+          height: auto !important;
+          color: #f8f8f2 !important;
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.5px !important;
+          background: transparent !important;
+          border: none !important;
+          --mdc-theme-primary: #f8f8f2 !important;
+          --mdc-theme-on-primary: #f8f8f2 !important;
+          --mdc-button-ink-color: #f8f8f2 !important;
+          --md-sys-color-primary: #f8f8f2 !important;
+        }
+
+        /* Ensure button slot content is visible */
+        div.edit-mode div.action-items ha-button *,
+        div.edit-mode div.action-items mwc-button *,
+        div.edit-mode div.action-items button * {
+          visibility: visible !important;
+          opacity: 1 !important;
+          color: #f8f8f2 !important;
+        }
+
+        /* Hide edit pencil icon in edit mode */
+        div.edit-mode div.action-items > ha-icon-button[data-test="edit-dashboard"],
+        div.edit-mode div.action-items > ha-icon-button:has(ha-svg-icon[path*="pencil"]) {
+          display: none !important;
+        }
+
+        div.edit-mode div.main-title {
+          display: none !important;
+        }
+
+        #view {
+          padding-top: 0px !important;
+        }
+      }
+
+    ha-app-layout $: |
+      #contentContainer {
+        padding-top: 0px !important;
+      }
+
   # ───────────────────────────────────────────────────────────────────────────
   # Dracula Color Palette
   # Official colors from https://draculatheme.com/contribute
@@ -235,8 +556,7 @@
   input-dropdown-icon-color: "var(--dracula-comment)"
 
   # ───────────────────────────────────────────────────────────────────────────
-  # 🆕 DROPDOWN & MENU STYLING (Enhanced Depth)
-  # Prominent dropdown appearance
+  # Dropdown & Menu Styling (Enhanced Depth)
   # ───────────────────────────────────────────────────────────────────────────
 
   # Menu/Dropdown backgrounds (darker for depth)
@@ -254,7 +574,7 @@
   mdc-menu-border-color: "rgba(139, 233, 253, 0.2)"
 
   # ───────────────────────────────────────────────────────────────────────────
-  # MEDIA PLAYER ENHANCEMENTS (Music Assistant)
+  # Media Player Enhancements (Music Assistant)
   # ───────────────────────────────────────────────────────────────────────────
 
   # Media progress bar (song/video progress)
@@ -298,8 +618,7 @@
   paper-item-icon-active-color: "var(--dracula-purple)"
 
   # ───────────────────────────────────────────────────────────────────────────
-  # HISTORY & LOGBOOK COLORS
-  # For tracking automation history and device logs
+  # History & Logbook Colors
   # ───────────────────────────────────────────────────────────────────────────
 
   # History graph line colors
@@ -333,8 +652,7 @@
   graph-grid-color: "rgba(98, 114, 164, 0.2)"
 
   # ───────────────────────────────────────────────────────────────────────────
-  # MAP CARD (ZONES)
-  # For person tracking and zone monitoring
+  # Map Card (Zones)
   # ───────────────────────────────────────────────────────────────────────────
 
   # Default zone colors
@@ -538,3 +856,24 @@
 
   ha-control-color: "var(--dracula-purple)"
   scrollbar-thumb-color: "var(--dracula-comment)"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CHANGELOG (embedded)
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# v1.3.0 - 2026-02-07
+# - Added floating navigation buttons (hamburger + edit/done) via card-mod
+# - Desktop only (>=768px), hidden on mobile
+# - Dracula-styled: current-line background with purple hover effects
+# - Edit mode: Purple "Done" pill button with visible text
+# - Requires card-mod (optional -- theme works fully without it)
+# - Compatible with Home Assistant 2026.2 + card-mod 4.2.0
+#
+# v1.2.2 - 2025-10-04
+# - Visual polish enhancements
+# - Toggle switch depth styling
+# - Bubble Card close button refinement
+#
+# ═══════════════════════════════════════════════════════════════════════════
+# END OF DRACULA THEME
+# ═══════════════════════════════════════════════════════════════════════════
