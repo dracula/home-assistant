@@ -2,11 +2,9 @@
 
 > A dark theme for [Home Assistant](https://www.home-assistant.io).
 
-![Dashboard Screenshot](./screenshot-02.png)
-
 ### Floating Buttons (with card-mod)
 
-![Floating Buttons Screenshot](./screenshot-03.png)
+![Floating Buttons Screenshot](./screenshot-02.png)
 
 ### Code Editor View
 
