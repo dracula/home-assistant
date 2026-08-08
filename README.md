@@ -27,6 +27,7 @@ All instructions can be found at [draculatheme.com/home-assistant](https://dracu
 - ✨ Smooth transitions and hover effects for premium feel
 - 🌙 Dark mode optimized with enhanced depth perception
 - 🔘 Floating navigation buttons with [card-mod](https://github.com/thomasloven/lovelace-card-mod) support (optional)
+- 🧩 Material Design 3 (MD3) token support — keeps select/dropdown text readable on HA 2026.4+
 
 ## Optional Enhancement: Floating Buttons
 

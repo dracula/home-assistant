@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-08-08
+
+### Fixed
+- **Select/dropdown text invisible** - Text in `ha-select`, `ha-combo-box`, and other MD3-based dropdowns rendered dark-on-dark and was unreadable
+  - Root cause: Home Assistant's frontend migrated these components from the legacy `--mdc-*` tokens to `--md-sys-color-*` (Material Design 3) tokens starting in 2026.4
+  - This theme only defined `--mdc-*` tokens, so the new components fell back to MD3's light-mode defaults (near-black text on a white surface), which is invisible against/blends into a dark theme
+
+### Added
+- **Material Design 3 (MD3) Tokens** - Full set of `--md-sys-color-*` variables mapped to the Dracula palette
+  - Surfaces (`surface`, `surface-container*`) reuse the existing current-line/darker depth convention
+  - `on-surface` set to Dracula foreground - this is what makes select/dropdown text visible again
+  - Primary/secondary/error color roles, outline, scrim, and shadow tokens for consistent MD3 component styling
+  - `md-list-item-container-color` set to transparent so dropdown list items show the themed surface color instead of MD3's opaque white default
+
+### Technical
+- Compatible with Home Assistant 2026.4+ MD3 frontend components
+
 ## [1.3.0] - 2026-02-07
 
 ### Added
